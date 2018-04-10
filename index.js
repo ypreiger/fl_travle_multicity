@@ -71,7 +71,7 @@ const alreadyWent = () => Promise.resolve(--running_promises);
 
 (async () => {
 
-    const browser = await puppeteer.launch({headless: false})
+    const browser = await puppeteer.launch({headless: false});
 
     const getBestPriceFor = async (searchStr) => {
         await canIGo();
@@ -85,9 +85,11 @@ const alreadyWent = () => Promise.resolve(--running_promises);
     }
 
     const logAndGetPrice = async (searchStr, index) => {
+        console.log(`loading ${searchStr}`)
         let csv = search_arr[index].reduce((acc, val) => acc + `${val.from};${val.to};${val.at}/07/18;`, `${searchStr};`);
         const price = await getBestPriceFor(searchStr);
         csv += `;${price}`;
+        console.log(`loaded ${searchStr}`)
         fs.appendFileSync('precos.csv', csv + "\n", 'utf8')
     }
 
@@ -95,4 +97,4 @@ const alreadyWent = () => Promise.resolve(--running_promises);
 
     browser.close();
 
-});
+})();
