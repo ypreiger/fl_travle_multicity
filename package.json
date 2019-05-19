@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Search google flights for multi-ticet prices",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": "https://github.com/Psidium/travel-multi-city",
   "author": "Gabriel Borges",
   "license": "GPL-2.0-or-later",
